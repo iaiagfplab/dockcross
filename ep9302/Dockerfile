@@ -13,6 +13,7 @@ RUN apt-get update \
 && apt-get install -y \
   qemu-user \
   qemu-user-static \
+  install lib32z1 \
 && apt-get clean --yes
 
 
