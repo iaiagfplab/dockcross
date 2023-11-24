@@ -8,7 +8,6 @@ ENV CT_VERSION crosstool-ng-1.25.0
 
 # This is for Cirrus Logic ep9302
 #include "common.crosstool"
-COPY ./4.1.1-920t/bin/* ${CROSS_ROOT}/bin/
 # The cross-compiling emulator
 RUN apt-get update \
 && apt-get install -y \
@@ -20,6 +19,7 @@ RUN apt-get update \
 # The CROSS_TRIPLE is a configured alias of the "arm-linux-uclibc" target.
 ENV CROSS_TRIPLE arm-linux-uclibc
 ENV CROSS_ROOT ${XCC_PREFIX}/${CROSS_TRIPLE}
+COPY ./4.1.1-920t/bin/* ${CROSS_ROOT}/bin/
 ENV AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
     AR=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ar \
     CC=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gcc \
